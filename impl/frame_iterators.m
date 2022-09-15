@@ -155,20 +155,26 @@ function [time_it, freq_it, res_it] = frame_iterators(batch, idx, time_ax, freq_
         cla(res_ax)
         hold(res_ax, 'on')
 
-        mi = branch{1}(2, :) > sys.alpha & batch.s < 0;
-        plot(res_ax, branch{1}(1, ~mi), branch{1}(2, ~mi), ...  % Stable upper
+        mi_upper = cw_upper(2, :) > batch.alpha & cw_upper(1, :) <= 2*cw_upper(2, :) & batch.s < 0;
+        mi_lower = cw_lower(2, :) > batch.alpha & cw_lower(1, :) >= 2*cw_lower(2, :) & batch.s > 0;
+
+        plot(res_ax, branch{1}(1, ~mi_upper), branch{1}(2, ~mi_upper), ...  % Stable upper
              'Marker', '.', 'linestyle', 'none', ...
              'MarkerSize', 4, 'Color', [0.4940 0.1840 0.5560])
-        plot(res_ax, branch{1}(1,  mi), branch{1}(2,  mi), ...  % Unstable upper
+        plot(res_ax, branch{1}(1,  mi_upper), branch{1}(2,  mi_upper), ...  % Unstable upper
             'Marker', '.', 'linestyle', 'none', ...
             'MarkerSize', 4, 'Color', [0 0.4470 0.7410])
 
         if ~isequal(branch{1}, branch{3})
             plot(res_ax, branch{2}(1, :), branch{2}(2, :), ...      % Middle
                  'Color', 'k', 'LineStyle', ':', 'LineWidth', 1.5)
-            plot(res_ax, branch{3}(1, :), branch{3}(2, :), ...      % Lower
+
+            plot(res_ax, branch{3}(1,  mi_lower), branch{3}(2,  mi_lower), ...  % Unstable lower
                  'Marker', '.', 'linestyle', 'none', ...
-                 'MarkerSize', 4, 'Color', [0.4940 0.1840 0.5560])
+                 'MarkerSize', 4, 'Color', [0 0.4470 0.7410])
+            plot(res_ax, branch{3}(1, ~mi_lower), branch{3}(2, ~mi_lower), ...  % Stable lower
+                 'Marker', '.', 'linestyle', 'none', ...
+                 'MarkerSize', 4, 'Color', [0.4940 0.1840 0.5560]) 
         end
 
         hold(res_ax, 'off')

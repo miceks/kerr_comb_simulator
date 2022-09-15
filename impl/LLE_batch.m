@@ -22,14 +22,18 @@ function batch = LLE_batch(F, s, pump_range, pump_levels, cw_power_levels, conv_
                                                  cw_power_levels);
 
         % Add detun-power points on modulational instability boundary
-        mi_detun = [cw_upper(1, cw_upper(2, :) > batch.alpha), ...
-                    cw_lower(1, cw_lower(2, :) > batch.alpha)];
+        switch batch.s
+            case -1, mi_detun = cw_upper(1, cw_upper(2, :) > batch.alpha & ...
+                                            cw_upper(1, :) <= 2*cw_upper(2, :));
+            case  1, mi_detun = cw_lower(1, cw_lower(2, :) > batch.alpha & ...
+                                            cw_lower(1, :) >= 2*cw_lower(2, :));
+        end
 
         if ~isempty(mi_detun)
             p1 = [min(mi_detun); P];
             p2 = [max(mi_detun); P];
             batch.mi_bounds = [p1 batch.mi_bounds p2];
-        end       
+        end
 
         % Add detun-power points on bistability boundary
         if ~isequal(cw_upper, cw_middle, cw_lower)
