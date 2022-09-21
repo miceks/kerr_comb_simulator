@@ -155,26 +155,42 @@ function [time_it, freq_it, res_it] = frame_iterators(batch, idx, time_ax, freq_
         cla(res_ax)
         hold(res_ax, 'on')
 
-        mi_upper = cw_upper(2, :) > batch.alpha & cw_upper(1, :) <= 2*cw_upper(2, :) & batch.s < 0;
-        mi_lower = cw_lower(2, :) > batch.alpha & cw_lower(1, :) >= 2*cw_lower(2, :) & batch.s > 0;
+        mi_upper = branch{1}(2, :) > batch.alpha & branch{1}(1, :) <= 2*branch{1}(2, :) & batch.s < 0;
+        mi_lower = branch{3}(2, :) > batch.alpha & branch{3}(1, :) >= 2*branch{3}(2, :) & batch.s > 0;
 
-        plot(res_ax, branch{1}(1, ~mi_upper), branch{1}(2, ~mi_upper), ...  % Stable upper
-             'Marker', '.', 'linestyle', 'none', ...
-             'MarkerSize', 4, 'Color', [0.4940 0.1840 0.5560])
-        plot(res_ax, branch{1}(1,  mi_upper), branch{1}(2,  mi_upper), ...  % Unstable upper
-            'Marker', '.', 'linestyle', 'none', ...
-            'MarkerSize', 4, 'Color', [0 0.4470 0.7410])
+        upper_A = find(mi_upper, 1, 'first');
+        upper_B = find(mi_upper, 1, 'last');
+
+        if isempty(upper_A) && isempty(upper_B)
+            upper_A = length(mi_upper);
+            upper_B = length(mi_upper);
+        end
+
+        % Stable upper A
+        plot(res_ax, branch{1}(1, 1:upper_A), branch{1}(2, 1:upper_A), ...
+             'LineWidth', 1.5, 'Color', [0.4940 0.1840 0.5560])
+
+        % Unstable upper
+        plot(res_ax, branch{1}(1, upper_A:upper_B), branch{1}(2, upper_A:upper_B), ... 
+             'LineWidth', 1.5, 'Color', [0 0.4470 0.7410])
+
+        % Stable Upper B
+        plot(res_ax, branch{1}(1, upper_B:end), branch{1}(2, upper_B:end), ... 
+             'LineWidth', 1.5, 'Color', [0.4940 0.1840 0.5560])
+
 
         if ~isequal(branch{1}, branch{3})
-            plot(res_ax, branch{2}(1, :), branch{2}(2, :), ...      % Middle
+            % Middle
+            plot(res_ax, branch{2}(1, :), branch{2}(2, :), ...      
                  'Color', 'k', 'LineStyle', ':', 'LineWidth', 1.5)
 
-            plot(res_ax, branch{3}(1,  mi_lower), branch{3}(2,  mi_lower), ...  % Unstable lower
-                 'Marker', '.', 'linestyle', 'none', ...
-                 'MarkerSize', 4, 'Color', [0 0.4470 0.7410])
-            plot(res_ax, branch{3}(1, ~mi_lower), branch{3}(2, ~mi_lower), ...  % Stable lower
-                 'Marker', '.', 'linestyle', 'none', ...
-                 'MarkerSize', 4, 'Color', [0.4940 0.1840 0.5560]) 
+            % Unstable lower
+            plot(res_ax, branch{3}(1,  mi_lower), branch{3}(2,  mi_lower), ...  
+                 'LineWidth', 1.5, 'Color', [0 0.4470 0.7410])
+
+            % Stable lower
+            plot(res_ax, branch{3}(1, ~mi_lower), branch{3}(2, ~mi_lower), ...  
+                 'LineWidth', 1.5, 'Color', [0.4940 0.1840 0.5560]) 
         end
 
         hold(res_ax, 'off')
