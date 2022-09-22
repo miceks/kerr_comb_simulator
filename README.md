@@ -14,7 +14,7 @@ where $\eta$ is the slow time (evolution variable) and $\tau$ the fast time (fie
 
 $$ \frac{\partial \psi^m}{\partial \xi} = -\frac{\alpha}{2} \psi^m - i s \frac{\partial^2 \psi^m}{\partial \tau^2} + i |\psi^m|^2 \psi^m,$$
 
-$$\psi^{m + 1}(0, \tau) = \sqrt{1 - \alpha} e^{-i \delta} \psi(1, \tau) + \sqrt{\alpha} \psi_{\text{in}}, $$
+$$\psi^{m + 1}(0, \tau) = \sqrt{1 - \alpha} e^{-i \delta} \psi^m(1, \tau) + \sqrt{\alpha} \psi_{\text{in}}, $$
 
 where the superscript of the field indicates the current roundtrip and the second equation constitute the time-varying boundary condition coupling the fields from successive roundtrips. The equations are expressed using the normalized variables
 
