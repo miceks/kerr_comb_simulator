@@ -20,7 +20,9 @@ where the superscript of the field indicates the current roundtrip and the secon
 
 $$ \xi = \frac{z}{L}, \quad \tau = \sqrt{\frac{2}{|\beta_2| L}} \ t, \quad \psi = \sqrt{L \gamma} \ A, $$
 
-where $z$ is the longitudinal distance in the cavity, $L$ is the cavity length, $t$ is the fast time, $\beta_2 = s |\beta_2|$ is the group velocity dispersion at the pump frequency $\omega_0$, $A$ is the pulse envelope amplitude (scaled such that $|A|^2$ is measured in units of power) and $\gamma = \omega_0 n_2 / c A_{\text{eff}}$ is the nonlinear coefficient with $n_2$ being the Kerr coefficient, $c$ the vacuum speed of light and $A_{\text{eff}}$ the effective mode area. Further, $\alpha$ is the total cavity loss related to the cavity finesse through $\mathcal{F} = \pi / \alpha$, $\delta$ is the pump frequency detuning and $\psi_{\text{in}} = \sqrt{L \gamma} \ A_{\text{in}}$ is the normalized pump field.
+where $z$ is the longitudinal distance in the cavity, $L$ is the cavity length, $t$ is the fast time, $\beta_2 = s |\beta_2|$ is the group velocity dispersion at the pump frequency $\omega_0$, $A$ is the pulse envelope amplitude (scaled such that $|A|^2$ is measured in units of power) and $\gamma = \omega_0 n_2 / c A_{\text{eff}}$ is the nonlinear coefficient with $n_2$ being the Kerr coefficient, $c$ the vacuum speed of light and $A_{\text{eff}}$ the effective mode area. Further, $\alpha$ is the total cavity loss related to the cavity finesse through $\mathcal{F} = \pi / \alpha$ which equals the power coupling coefficient since critical coupling is assumed, $\delta$ is the pump frequency detuning and $\psi_{\text{in}} = \sqrt{L \gamma} \ A_{\text{in}}$ is the normalized pump field.
+
+The two models were normalized with the intent to reduce the parameter space to two dimensions (after choosing the resonator finesse and group velocity dispersion sign), where both models use the same parameter space. This was to make the produced phase diagrams directly comparable since the project was in part intended to look at the differences between the often-employed LLE model and the more general Ikeda map model.
 
 ## Basic usage guide
 
