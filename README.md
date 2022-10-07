@@ -1,6 +1,6 @@
 # Kerr Comb Simulator
 
-This MATLAB application was developed during my master thesis project to aid in conducting numerical simulations of Kerr frequency combs. It provides a graphical user interface to rapidly schedule, execute and inspect simulations of Kerr cavities over a two-dimensional parameter space corresponding to pump frequency detuning and power.
+This MATLAB application was developed during my [master thesis](http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-188085) project to aid in conducting numerical simulations of Kerr frequency combs. It provides a graphical user interface to rapidly schedule, execute and inspect simulations of Kerr cavities over a two-dimensional parameter space corresponding to pump frequency detuning and power.
 
 ![Example](/docs/Example.PNG)
 
@@ -41,9 +41,4 @@ When a system finish simulating, it becomes available for inspection when select
 
 The app has been tested on MATLAB R2021b using Windows 10. There are some bugs that I know about and likely far more that I don't. 
 
-In order to enable graphical selection ('brushing') on the parameter map, the use of the undocumented property 'BrushData' was necessary. In the (unlikely) scenario that this property is changed in future MATLAB releases, this might break things. 
-
-
-## TODO
-
-Link to thesis if / when published.
+In order to enable graphical selection ('brushing') on the parameter map, the use of the undocumented property 'BrushData' was necessary. In the (unlikely) scenario that this property is changed in future MATLAB releases, this might break things.
