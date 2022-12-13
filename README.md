@@ -1,6 +1,6 @@
 # Kerr Comb Simulator
 
-This MATLAB application was developed during my [master thesis](http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-188085) project to aid in conducting numerical simulations of Kerr frequency combs. It provides a graphical user interface to rapidly schedule, execute and inspect simulations of Kerr cavities over a two-dimensional parameter space corresponding to pump frequency detuning and power.
+This MATLAB application was developed during my [master thesis](http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-188085) project (now also available in docs if link does not work) to aid in conducting numerical simulations of Kerr frequency combs. It provides a graphical user interface to rapidly schedule, execute and inspect simulations of Kerr cavities over a two-dimensional parameter space corresponding to pump frequency detuning and power.
 
 ![Example](/docs/Example.PNG)
 
